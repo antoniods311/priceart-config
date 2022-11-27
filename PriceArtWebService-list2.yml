@@ -1,0 +1,34 @@
+# ==============================================================
+# = Application Config
+# =
+# = Questa una specifica custom, non esiste nel framework.
+# = Serve ad indicare l'id del listino che voglio utilizzare.
+# ==============================================================
+application:
+  listino: 2
+# ==============================================================
+# = Actuator Parameters
+# ==============================================================
+management:
+  info:
+    env:
+      enabled: true
+    git:
+      enabled: true
+      mode: full
+  endpoint:
+    health:
+      show-details: WHEN_AUTHORIZED
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+# ==============================================================
+# = Actuator Info
+# ==============================================================
+info:
+  assistenza:
+    nome: Jon Snow
+  nome:
+    nome-app: PriceArt Web Service - Autenticazione OAUTH2 Keycloak
+  profilo: GitHub
