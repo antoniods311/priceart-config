@@ -1,0 +1,52 @@
+#==========================================================
+# = Eureka Server - Versione Base
+# = Dash: http://localhost:8761
+#==========================================================
+spring:
+  application:
+    name: EurekaServer
+server:
+  port: 8761
+  tomcat:
+    threads:
+      max: 5 #per limitare consumo memoria
+#==========================================================
+# = Eureka Server Parameter
+#==========================================================
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true #specifica che la registrazione avviene tramite ip e non sull'hostname
+#==========================================================
+# = Impostazioni Server
+#==========================================================
+  server:
+    enable-self-preservation: true #abilita autopreservazione
+    response-cache-update-interval-ms: 60000 #durata della cache
+    eviction-interval-timer-in-ms: 30000 #Tempo di attesa in ms di deregistrazione del servizio
+    wait-time-in-ms-when-sync-empty: 5 #tempo di attesa prima di accettare richieste
+    peer-node-read-timeout-ms: 500 #timeout di connessione al peer
+#==========================================================
+# = Impostazioni Client
+#==========================================================
+  client:
+    register-with-eureka: false #Evitare che l'EurekaServer si autoregistri
+    fetch-registry: false
+    service-url:
+      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+# ==============================================================
+# = Parametri di Sicurezza
+# ==============================================================
+#sicurezza:
+#  userpwd: '123_Stella'
+#  adminpwd: '123_Stella'
+
+# ==============================================================
+# = Eureka Endpoints
+# ==============================================================
+# GET /eureka/apps : visualizza tutte le app
+# GET /eureka/apps/[appID] : visualizza dettagli app
+# GET /eureka/apps/[appID]/[instanceID] : visualizza dettagli istanza
+# PUT /eureka/apps/[appID]/[instanceID] : invia heartbit all'istanza
+# DELETE /eureka/apps/[appID]/[instanceID] : cancella istanza
+# POST /eureka/apps/[appID] : aggiunge istanza
